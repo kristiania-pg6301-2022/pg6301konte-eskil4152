@@ -1,7 +1,7 @@
 # PG6301 eksamen <tittel på løsningen>
 
 [Heroku](https://pg6301-kont.herokuapp.com) <br>
-[Test rapport](link til testrapport) <br>
+[Test rapport](https://github.com/kristiania-pg6301-2022/pg6301konte-eskil4152/commit/ba391050e1ab53c53a2637717100235dbe7cff53#commitcomment-80975394) <br>
 [Github](https://github.com/kristiania-pg6301-2022/pg6301konte-eskil4152)
 
 ## Tips
