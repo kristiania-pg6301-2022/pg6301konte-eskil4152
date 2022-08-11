@@ -5,6 +5,7 @@ import path from "path";
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 import { LoginApi } from "./LoginApi.js";
+import { UserApi } from "./UserApi.js";
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ mongoClient.connect().then(async () => {
   console.log("Connected to database");
 
   app.use("/api/login", LoginApi(mongoClient.db("pg6301-kont")));
+  app.use("/api/user", UserApi(mongoClient.db("pg6301-kont")));
 });
 
 app.use(express.static("../client/dist"));

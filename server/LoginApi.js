@@ -91,7 +91,6 @@ export function LoginApi(mongoDatabase) {
         picture,
         email,
         id,
-
         github,
       });
     }

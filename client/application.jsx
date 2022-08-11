@@ -11,6 +11,9 @@ import {
 import googleImg from "./style/images/Google.svg.png";
 import msImg from "./style/images/ms.png";
 import { FrontPage } from "./pages/frontPage";
+import { ProfilePage } from "./pages/profilePage";
+import { EditProfile } from "./pages/editProfile";
+import "./style/css.css";
 
 export function Application() {
   return (
@@ -18,6 +21,7 @@ export function Application() {
       <Routes>
         <Route path={"/"} element={<FrontPage />} />
         <Route path={"/login/*"} element={<LoginApplication />} />
+        <Route path={"/profile/*"} element={<ProfileApplication />} />
         <Route path={"*"} element={<h1>Not found</h1>} />
       </Routes>
     </BrowserRouter>
@@ -38,6 +42,15 @@ function LoginApplication() {
         element={<LoginAlternatives google={googleImg} ms={msImg} />}
       />
       <Route path={"/logout"} element={<Logout />} />
+    </Routes>
+  );
+}
+
+function ProfileApplication() {
+  return (
+    <Routes>
+      <Route path={"/"} element={<ProfilePage />} />
+      <Route path={"/edit"} element={<EditProfile />} />
     </Routes>
   );
 }
