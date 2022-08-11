@@ -1,0 +1,22 @@
+#messagesContainer {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+#messages {
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px whitesmoke solid;
+    height: auto;
+    border-radius: 10px;
+}
+
+#message {
+    padding: 5px;
+    text-decoration: underline;
+}
+
+#button {
+    padding-top: 5px;
+}

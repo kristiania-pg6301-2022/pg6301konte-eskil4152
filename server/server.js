@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 import { LoginApi } from "./APIs/LoginApi.js";
 import { UserApi } from "./APIs/UserApi.js";
 import { MessagesApi } from "./APIs/MessagesApi.js";
+import { WebSocketServer } from "ws";
 
 dotenv.config();
 
@@ -44,6 +45,16 @@ app.use((req, res, next) => {
   }
 });
 
+const wsServer = new WebSocketServer({ noServer: true });
+wsServer.on("connect", (socket) => {
+  console.log("Ws connected");
+});
+
 const server = app.listen(process.env.PORT || 3000, () => {
   console.info(`Server at http://localhost:${server.address().port}`);
+  server.on("upgrade", (req, socket, head) => {
+    wsServer.handleUpgrade(req, socket, head, () => {
+      wsServer.emit("connect", socket, req);
+    });
+  });
 });
