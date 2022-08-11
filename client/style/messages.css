@@ -1,17 +1,12 @@
 #messagesContainer {
     display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
     padding: 10px;
     border: 1px whitesmoke solid;
-    height: auto;
     border-radius: 10px;
     background-color: cadetblue;
     margin-top: 10px;
     margin-bottom: 10px;
-}
-
-#messagesPage {
-    text-align: center;
+    max-height: 60vh;
 }
 
 #message {
