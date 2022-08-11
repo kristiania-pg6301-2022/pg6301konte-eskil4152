@@ -1,64 +1,60 @@
 import { useContext, useEffect, useState } from "react";
-import { ApiContext } from "../tools/ApiContext";
-import { useLoader } from "../tools/useLoader";
-import { useNavigate } from "react-router-dom";
 import React from "react";
+import { ApiContext } from "../tools/ApiContext";
+import { fetchJSON } from "../tools/fetchJSON";
+import { useLoader } from "../tools/useLoader";
 
-function MessageCard({ msg }) {
-  const { messages } = msg;
-
-  console.log(messages);
-
+function ChatMessage({ chat: { author, message } }) {
   return (
     <div>
-      {messages.map((msg, index) => (
-        <div id={"message"} key={index}>
-          <strong>{msg}</strong>
-        </div>
-      ))}
+      <strong>{author}: </strong>
+      {message}
     </div>
   );
 }
 
 export function Messages() {
-  useNavigate();
-  const { getMessages } = useContext(ApiContext);
-  const { sendMessage } = useContext(ApiContext);
-  const [message, setMessage] = useState("");
-  const [errorSend] = useState("");
+  const { getMessages, sendMessage, getUser } = useContext(ApiContext);
 
-  async function handleSubmit(e) {
-    e.preventDefault();
+  const username = "Ole";
 
-    const response = await sendMessage({ message });
-  }
+  const [ws, setWs] = useState();
+
+  useEffect(() => {
+    const ws = new WebSocket(window.location.origin.replace(/^http/, "ws"));
+    ws.onmessage = (event) => {
+      const { author, message } = JSON.parse(event.data);
+      setChatLog((oldState) => [...oldState, { author, message }]);
+    };
+    setWs(ws);
+  }, []);
 
   const { loading, error, data } = useLoader(async () => await getMessages());
 
-  const messages = data;
+  console.log(data);
 
-  if (loading) {
-    return <div>Loading messages...</div>;
-  }
-  if (error) {
-    return <div>Error: {error}</div>;
+  const [chatLog, setChatLog] = useState([]);
+  const [message, setMessage] = useState("");
+
+  async function handleNewMessage(event) {
+    event.preventDefault();
+    const chatMessage = { author: username, message };
+    await sendMessage(chatMessage);
+    ws.send(JSON.stringify(chatMessage));
+    setMessage("");
   }
 
   return (
-    <div id={"messagesContainer"}>
-      {messages.map((msg, index) => (
-        <div key={index} id={"messages"}>
-          <MessageCard msg={msg} />
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder={"Your message"}
-            />
-            <button id={"button"}>Submit</button>
-          </form>
-        </div>
-      ))}
+    <div className={"messagesContainer"}>
+      <div id={"messages"}>
+        {chatLog.map((chat, index) => (
+          <ChatMessage key={index} chat={chat} />
+        ))}
+      </div>
+      <form onSubmit={handleNewMessage}>
+        <input value={message} onChange={(e) => setMessage(e.target.value)} />
+        <button id={"button"}>Submit</button>
+      </form>
     </div>
   );
 }

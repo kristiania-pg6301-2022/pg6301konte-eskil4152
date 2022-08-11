@@ -5,7 +5,7 @@ export function MessagesApi(mongoDatabase) {
 
   router.get("/", async (req, res) => {
     const messages = await mongoDatabase
-      .collection("messages")
+      .collection("testmessage")
       .find()
       .toArray();
 
@@ -17,10 +17,10 @@ export function MessagesApi(mongoDatabase) {
     const { message } = req.body;
 
     await mongoDatabase
-      .collection("messages")
+      .collection("testmessage")
       .updateOne(
         { room: 1 },
-        { $push: { messages: `${username}: ${message}` } }
+        { $push: { messages: { author: username, message: message } } }
       );
 
     res.sendStatus(200);
