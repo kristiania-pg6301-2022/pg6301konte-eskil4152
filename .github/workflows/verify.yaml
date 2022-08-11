@@ -12,4 +12,12 @@ jobs:
       - uses: actions/setup-node@v2
       - name: install dependencies
         run: npm ci
-      - run: npm run test:client
+      - run: npm test
+      - name: Collect coverage from client
+        uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          working-directory: client
+      - name: Collect coverage from server
+        uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          working-directory: server
