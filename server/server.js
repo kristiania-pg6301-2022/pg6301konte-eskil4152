@@ -16,8 +16,11 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 
 app.use((req, res, next) => {
   const { access_token, ms_access_token } = req.signedCookies;
-  if (req.path.startsWith("/profile") && !(access_token || ms_access_token)) {
-    return res.sendStatus(401);
+  if (
+    (req.path.startsWith("/profile") || req.path.startsWith("/messages")) &&
+    !(access_token || ms_access_token)
+  ) {
+    return res.redirect("/login/alternatives");
   }
   next();
 });

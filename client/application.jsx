@@ -14,6 +14,7 @@ import { FrontPage } from "./pages/frontPage";
 import { ProfilePage } from "./pages/profilePage";
 import { EditProfile } from "./pages/editProfile";
 import "./style/css.css";
+import "./style/messages.css";
 import { Messages } from "./pages/messages";
 
 export function Application() {

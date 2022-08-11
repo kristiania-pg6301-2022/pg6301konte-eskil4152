@@ -42,7 +42,7 @@ export function Callback() {
       body: JSON.stringify({ access_token }),
     });
 
-    window.location.href = window.location.origin;
+    window.location.href = window.location.origin + "/messages";
   });
 
   return <h1>Please wait...</h1>;
@@ -55,7 +55,7 @@ export function AzureLogin() {
     );
 
     const parameters = {
-      client_id: "cd72d302-b65e-4988-a7c1-1cd9dd83aea5",
+      client_id: "4de68f2d-d8d5-4d80-b87e-4a9f42ce148c",
       response_type: "token",
       scope: "openid email profile",
       nonce: "123",
@@ -89,7 +89,7 @@ export function AzureCallback() {
       body: JSON.stringify({ access_token }),
     });
 
-    window.location.href = window.location.origin;
+    window.location.href = window.location.origin + "/messages";
   });
 
   return <h1>Please wait...</h1>;
