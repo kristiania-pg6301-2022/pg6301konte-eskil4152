@@ -139,31 +139,23 @@ export function Logout() {
 
 export function LoginAlternatives({ googleImg, msImg }) {
   return (
-    <div className={"min-h-screen"} id={"loginAlternativesContainer"}>
-      <div className={"border-2 border-black w-2/12 h-80 my-4 mx-auto"}>
-        <a href="/login">
-          <h1 className={"font-semibold font-sans text-2xl text-center mt-2"}>
-            Log in with Google{" "}
-          </h1>
-          <img
-            className={"w-64 mx-auto mt-2"}
-            src={googleImg}
-            alt={"Google Logo"}
-          />{" "}
-        </a>
-      </div>
-      <div className={"border-2 border-black w-2/12 h-80 mx-auto"}>
-        <a href="/login/azure">
-          <h1 className={"font-semibold font-sans text-2xl text-center mt-2"}>
-            Log in with Active Directory{" "}
-          </h1>
-          <img
-            className={"w-64 mx-auto mt-2"}
-            src={msImg}
-            alt={"Microsoft Logo"}
-          />
-        </a>
-      </div>
+    <div>
+      <a href="/login">
+        <h1>Log in with Google </h1>
+        <img
+          className={"w-64 mx-auto mt-2"}
+          src={googleImg}
+          alt={"Google Logo"}
+        />{" "}
+      </a>
+      <a href="/login/azure">
+        <h1>Log in with Active Directory </h1>
+        <img
+          className={"w-64 mx-auto mt-2"}
+          src={msImg}
+          alt={"Microsoft Logo"}
+        />
+      </a>
     </div>
   );
 }

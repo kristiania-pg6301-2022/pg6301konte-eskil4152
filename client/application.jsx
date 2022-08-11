@@ -8,12 +8,13 @@ import {
   LoginAlternatives,
   Logout,
 } from "./pages/login";
-import googleImg from "./style/images/Google.svg.png";
-import msImg from "./style/images/ms.png";
+import googleImg from "./style/Google.svg.png";
+import msImg from "./style/ms.png";
 import { FrontPage } from "./pages/frontPage";
 import { ProfilePage } from "./pages/profilePage";
 import { EditProfile } from "./pages/editProfile";
 import "./style/css.css";
+import { Messages } from "./pages/messages";
 
 export function Application() {
   return (
@@ -22,9 +23,18 @@ export function Application() {
         <Route path={"/"} element={<FrontPage />} />
         <Route path={"/login/*"} element={<LoginApplication />} />
         <Route path={"/profile/*"} element={<ProfileApplication />} />
+        <Route path={"/messages/*"} element={<MessagesApplication />} />
         <Route path={"*"} element={<h1>Not found</h1>} />
       </Routes>
     </BrowserRouter>
+  );
+}
+
+function MessagesApplication() {
+  return (
+    <Routes>
+      <Route path={"/"} element={<Messages />} />
+    </Routes>
   );
 }
 

@@ -4,8 +4,9 @@ import cookieParser from "cookie-parser";
 import path from "path";
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
-import { LoginApi } from "./LoginApi.js";
-import { UserApi } from "./UserApi.js";
+import { LoginApi } from "./APIs/LoginApi.js";
+import { UserApi } from "./APIs/UserApi.js";
+import { MessagesApi } from "./APIs/MessagesApi.js";
 
 dotenv.config();
 
@@ -15,10 +16,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 
 app.use((req, res, next) => {
   const { access_token, ms_access_token } = req.signedCookies;
-  if (
-    (req.path.startsWith("/chat") || req.path.startsWith("/profile")) &&
-    !(access_token || ms_access_token)
-  ) {
+  if (req.path.startsWith("/profile") && !(access_token || ms_access_token)) {
     return res.sendStatus(401);
   }
   next();
@@ -30,6 +28,7 @@ mongoClient.connect().then(async () => {
 
   app.use("/api/login", LoginApi(mongoClient.db("pg6301-kont")));
   app.use("/api/user", UserApi(mongoClient.db("pg6301-kont")));
+  app.use("/api/messages", MessagesApi(mongoClient.db("pg6301-kont")));
 });
 
 app.use(express.static("../client/dist"));
