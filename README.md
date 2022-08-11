@@ -1,7 +1,8 @@
 # PG6301 eksamen <tittel på løsningen>
 
 [Heroku](https://pg6301-kont.herokuapp.com) <br>
-[Test rapport](link til testrapport)
+[Test rapport](link til testrapport) <br>
+[Github](https://github.com/kristiania-pg6301-2022/pg6301konte-eskil4152)
 
 ## Tips
 
@@ -25,6 +26,7 @@ Dette er versjonene vi brukte under forelesningene om som er validert som ok:
 ## Egenutfylling av funksjonelle krav
 
 * [ ] Anonyme brukere skal ikke se chat-loggen
+  * Fikk ikke til å begrense brukere
 * [x] Brukere kan logge inn
 * [x] Brukere har en profilside
 * [x] Brukere skal kunne sende chat-meldinger
@@ -36,7 +38,6 @@ Dette er versjonene vi brukte under forelesningene om som er validert som ok:
 * [x] Kan endre bio og se andres profil
 * [x] Brukere forblir innlogget om de refresher siden
 * [x] Feil skal presenteres på en fin måte
-  * *beskriv eventuelle mangler eller problemer for delvis uttelling*
 
 ## Egenutfylling av tekniske krav
 
