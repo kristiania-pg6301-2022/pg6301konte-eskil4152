@@ -1,0 +1,14 @@
+/shelf/
+/workspace.xml
+/httpRequests/
+/dataSources/
+/dataSources.local.xml
+.idea/
+coverage/
+dist/
+.parcel-cache/
+
+node_modules/
+
+/server/.env
+/client/__tests__/__snapshots__/
