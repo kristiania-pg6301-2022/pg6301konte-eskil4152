@@ -1,12 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ApiContext } from "../tools/ApiContext";
-import { fetchJSON } from "../tools/fetchJSON";
 import { useLoader } from "../tools/useLoader";
 
 function ChatMessage({ chat: { author, message } }) {
   return (
-    <div>
+    <div id={"message"}>
       <strong>{author}: </strong>
       {message}
     </div>
@@ -18,7 +16,9 @@ function PrevMessageCard({ msg }) {
   return (
     <div>
       {messages.map((msg, index) => (
-        <div key={index}>{msg}</div>
+        <div id={"message"} key={index}>
+          {msg}
+        </div>
       ))}
     </div>
   );
@@ -58,10 +58,8 @@ export function Messages() {
     return <div>error, sorry</div>;
   }
 
-  const prevMessages = data;
-
   return (
-    <div className={"messagesContainer"}>
+    <div id={"messagesPage"}>
       <h1>Your username: {username}</h1>
       Change username:{" "}
       <input
@@ -69,9 +67,9 @@ export function Messages() {
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
-      <div id={"messages"}>
+      <div id={"messagesContainer"}>
         <div>
-          {prevMessages.map((msg) => (
+          {data.map((msg) => (
             <PrevMessageCard msg={msg} />
           ))}
         </div>
@@ -80,11 +78,11 @@ export function Messages() {
             <ChatMessage key={index} chat={chat} />
           ))}
         </div>
-        <form onSubmit={handleNewMessage}>
-          <input value={message} onChange={(e) => setMessage(e.target.value)} />
-          <button id={"button"}>Submit</button>
-        </form>
       </div>
+      <form onSubmit={handleNewMessage} id={"form"}>
+        <input value={message} onChange={(e) => setMessage(e.target.value)} />
+        <button id={"button"}>Submit</button>
+      </form>
     </div>
   );
 }

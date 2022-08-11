@@ -1,22 +1,26 @@
 #messagesContainer {
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
-}
-
-#messages {
-    padding-bottom: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
     border: 1px whitesmoke solid;
     height: auto;
     border-radius: 10px;
     background-color: cadetblue;
 }
 
+#messagesPage {
+    text-align: center;
+}
+
 #message {
-    padding: 5px;
+    padding: 3px;
 }
 
 #button {
     padding-top: 5px;
+}
+
+#form {
+    text-align: center;
+    margin-bottom: 0;
 }
