@@ -14,15 +14,21 @@ export function UserApi(mongoDatabase) {
     res.json(user);
   });
 
+  router.get("/all", async (req, res) => {
+    const users = await mongoDatabase.collection("users").find().toArray();
+
+    res.json(users);
+  });
+
   router.put("/", async (req, res) => {
-    const { newGithub } = req.body;
+    const { newBio } = req.body;
     const { author_id } = req.signedCookies;
 
     await mongoDatabase.collection("users").updateOne(
       { id: author_id },
       {
         $set: {
-          github: newGithub,
+          bio: newBio,
         },
       },
       { upsert: true, ignoreUndefined: true }

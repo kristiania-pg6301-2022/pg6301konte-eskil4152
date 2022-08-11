@@ -10,11 +10,11 @@
     border: 1px whitesmoke solid;
     height: auto;
     border-radius: 10px;
+    background-color: cadetblue;
 }
 
 #message {
     padding: 5px;
-    text-decoration: underline;
 }
 
 #button {

@@ -11,8 +11,7 @@ import {
 import googleImg from "./style/Google.svg.png";
 import msImg from "./style/ms.png";
 import { FrontPage } from "./pages/frontPage";
-import { ProfilePage } from "./pages/profilePage";
-import { EditProfile } from "./pages/editProfile";
+import { AllProfiles, Profile } from "./pages/profile";
 import "./style/css.css";
 import "./style/messages.css";
 import { Messages } from "./pages/messages";
@@ -20,6 +19,12 @@ import { Messages } from "./pages/messages";
 export function Application() {
   return (
     <BrowserRouter>
+      <header>
+        <Link to={"/profile"}>Your Profile</Link>
+        <Link to={"/profile/all"}>All Profiles</Link>
+        <Link to={"/messages"}>Chats</Link>
+        <Link to={"/login/logout"}>Log out</Link>
+      </header>
       <Routes>
         <Route path={"/"} element={<FrontPage />} />
         <Route path={"/login/*"} element={<LoginApplication />} />
@@ -60,8 +65,8 @@ function LoginApplication() {
 function ProfileApplication() {
   return (
     <Routes>
-      <Route path={"/"} element={<ProfilePage />} />
-      <Route path={"/edit"} element={<EditProfile />} />
+      <Route path={"/all"} element={<AllProfiles />} />
+      <Route path={"/"} element={<Profile />} />
     </Routes>
   );
 }

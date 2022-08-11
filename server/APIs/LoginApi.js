@@ -75,7 +75,7 @@ export function LoginApi(mongoDatabase) {
     const picture = userinfo.picture;
     const email = userinfo.email;
     const id = userinfo.sub;
-    const github = "Link to your github";
+    const bio = "Link to your bio";
 
     const foo = await mongoDatabase
       .collection("users")
@@ -91,7 +91,7 @@ export function LoginApi(mongoDatabase) {
         picture,
         email,
         id,
-        github,
+        bio,
       });
     }
 
@@ -130,7 +130,7 @@ export function LoginApi(mongoDatabase) {
     const picture = userinfo.picture;
     const email = userinfo.email;
     const id = userinfo.sub;
-    const github = "Link to your github";
+    const bio = "Link to your bio";
 
     const foo = await mongoDatabase
       .collection("users")
@@ -146,7 +146,7 @@ export function LoginApi(mongoDatabase) {
         picture,
         email,
         id,
-        github,
+        bio,
       });
     }
 

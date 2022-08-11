@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { ApiContext } from "../tools/ApiContext";
 import { useLoader } from "../tools/useLoader";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
 function MessageCard({ msg }) {
   const { messages } = msg;
@@ -12,7 +13,7 @@ function MessageCard({ msg }) {
     <div>
       {messages.map((msg, index) => (
         <div id={"message"} key={index}>
-          {msg}
+          <strong>{msg}</strong>
         </div>
       ))}
     </div>
@@ -20,17 +21,11 @@ function MessageCard({ msg }) {
 }
 
 export function Messages() {
-  const [ws, setWs] = useState();
-  useEffect(() => {
-    const ws = new WebSocket("ws://localhost:3000");
-    setWs(ws);
-  }, []);
-
-  const navigate = useNavigate();
+  useNavigate();
   const { getMessages } = useContext(ApiContext);
   const { sendMessage } = useContext(ApiContext);
   const [message, setMessage] = useState("");
-  const [errorSend, setErrorSend] = useState("");
+  const [errorSend] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();

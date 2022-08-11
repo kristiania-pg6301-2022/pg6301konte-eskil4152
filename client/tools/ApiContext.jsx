@@ -12,6 +12,10 @@ export const ApiContext = React.createContext({
     return await putJSON("/api/user", user);
   },
 
+  async getAllUsers() {
+    return await fetchJSON("/api/user/all");
+  },
+
   async checkProfile() {
     return await fetchJSON("/api/login");
   },
