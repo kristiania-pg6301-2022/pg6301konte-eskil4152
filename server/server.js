@@ -15,17 +15,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
-app.use((req, res, next) => {
-  const { access_token, ms_access_token } = req.signedCookies;
-  if (
-    (req.path.startsWith("/profile") || req.path.startsWith("/messages")) &&
-    !(access_token || ms_access_token)
-  ) {
-    return res.redirect("/login/alternatives");
-  }
-  next();
-});
-
 const mongoClient = new MongoClient(process.env.MONGODB_URL);
 mongoClient.connect().then(async () => {
   console.log("Connected to database");

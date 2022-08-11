@@ -6,6 +6,8 @@
     height: auto;
     border-radius: 10px;
     background-color: cadetblue;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #messagesPage {

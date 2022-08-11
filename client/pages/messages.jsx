@@ -80,6 +80,7 @@ export function Messages() {
         </div>
       </div>
       <form onSubmit={handleNewMessage} id={"form"}>
+        Chat:{" "}
         <input value={message} onChange={(e) => setMessage(e.target.value)} />
         <button id={"button"}>Submit</button>
       </form>

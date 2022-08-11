@@ -1,6 +1,6 @@
 # PG6301 eksamen <tittel på løsningen>
 
-[Heroku](link til heroku)
+[Heroku](https://pg6301-kont.herokuapp.com) <br>
 [Test rapport](link til testrapport)
 
 ## Tips
@@ -24,29 +24,29 @@ Dette er versjonene vi brukte under forelesningene om som er validert som ok:
 
 ## Egenutfylling av funksjonelle krav
 
-* [ ] *legg inn krav fra eksamentekst*
-  * *beskriv eventuelle mangler eller problemer for delvis uttelling*
-* [ ] *legg inn krav fra eksamentekst*
+* [ ] Anonyme brukere skal ikke se chat-loggen
+* [x] Brukere kan logge inn
+* [x] Brukere har en profilside
+* [x] Brukere skal kunne sende chat-meldinger
+* [x] Meldinger skal lagres på mongodb
+* [x] Meldinger skal komme opp umiddelbart
+* [x] Chatmeldinger skal inneholde navnet på brukeren
+* [x] Når brukeren logges inn skal eksisterende meldinger hentes
+* [ ] Flere chatrom
+* [x] Kan endre bio og se andres profil
+* [x] Brukere forblir innlogget om de refresher siden
+* [x] Feil skal presenteres på en fin måte
   * *beskriv eventuelle mangler eller problemer for delvis uttelling*
 
 ## Egenutfylling av tekniske krav
 
-* [ ] Oppsett av package.json, parcel, express, prettier
-  * *beskriv eventuelle mangler eller problemer for delvis uttelling*
-* [ ] React Router
-  * *beskriv eventuelle mangler eller problemer for delvis uttelling*
-* [ ] Express app
-  * *beskriv eventuelle mangler eller problemer for delvis uttelling*
-* [ ] Kommunikasjon mellom frontend (React) og backend (Express)
-  * *beskriv eventuelle mangler eller problemer for delvis uttelling*
-* [ ] Deployment til Heroku
-  * *beskriv eventuelle mangler eller problemer for delvis uttelling*
-* [ ] Bruk av MongoDB
-  * *beskriv eventuelle mangler eller problemer for delvis uttelling*
-* [ ] OpenID Connect
-  * *beskriv eventuelle mangler eller problemer for delvis uttelling*
-* [ ] Web Sockets
-  * *beskriv eventuelle mangler eller problemer for delvis uttelling*
+* [x] Oppsett av package.json, parcel, express, prettier
+* [x] React Router
+* [x] Express app
+* [x] Kommunikasjon mellom frontend (React) og backend (Express)
+* [x] Deployment til Heroku
+* [x] Bruk av MongoDB
+* [x] OpenID Connect
+* [x] Web Sockets
 * [ ] Jest med dokumentert testdekning
-  * *beskriv eventuelle mangler eller problemer for delvis uttelling*
  
