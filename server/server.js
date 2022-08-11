@@ -53,11 +53,6 @@ const sockets = [];
 
 wsServer.on("connect", (socket) => {
   sockets.push(socket);
-  setTimeout(() => {
-    socket.send(
-      JSON.stringify({ author: "Server", message: "Hello from server" })
-    );
-  }, 1000);
   socket.on("message", (data) => {
     const { author, message } = JSON.parse(data);
     for (const recipient of sockets) {

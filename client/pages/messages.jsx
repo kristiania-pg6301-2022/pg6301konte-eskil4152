@@ -13,10 +13,19 @@ function ChatMessage({ chat: { author, message } }) {
   );
 }
 
-export function Messages() {
-  const { getMessages, sendMessage, getUser } = useContext(ApiContext);
+function PrevMessageCard({ msg }) {
+  const { messages } = msg;
+  return (
+    <div>
+      {messages.map((msg, index) => (
+        <div key={index}>{msg}</div>
+      ))}
+    </div>
+  );
+}
 
-  const username = "Ole";
+export function Messages() {
+  const { getMessages, sendMessage } = useContext(ApiContext);
 
   const [ws, setWs] = useState();
 
@@ -29,11 +38,8 @@ export function Messages() {
     setWs(ws);
   }, []);
 
-  const { loading, error, data } = useLoader(async () => await getMessages());
-
-  console.log(data);
-
   const [chatLog, setChatLog] = useState([]);
+  const [username, setUsername] = useState("Anonymous");
   const [message, setMessage] = useState("");
 
   async function handleNewMessage(event) {
@@ -44,17 +50,41 @@ export function Messages() {
     setMessage("");
   }
 
+  const { loading, error, data } = useLoader(async () => await getMessages());
+  if (loading) {
+    return <div>loading</div>;
+  }
+  if (error) {
+    return <div>error, sorry</div>;
+  }
+
+  const prevMessages = data;
+
   return (
     <div className={"messagesContainer"}>
+      <h1>Your username: {username}</h1>
+      Change username:{" "}
+      <input
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
       <div id={"messages"}>
-        {chatLog.map((chat, index) => (
-          <ChatMessage key={index} chat={chat} />
-        ))}
+        <div>
+          {prevMessages.map((msg) => (
+            <PrevMessageCard msg={msg} />
+          ))}
+        </div>
+        <div>
+          {chatLog.map((chat, index) => (
+            <ChatMessage key={index} chat={chat} />
+          ))}
+        </div>
+        <form onSubmit={handleNewMessage}>
+          <input value={message} onChange={(e) => setMessage(e.target.value)} />
+          <button id={"button"}>Submit</button>
+        </form>
       </div>
-      <form onSubmit={handleNewMessage}>
-        <input value={message} onChange={(e) => setMessage(e.target.value)} />
-        <button id={"button"}>Submit</button>
-      </form>
     </div>
   );
 }
